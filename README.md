@@ -30,6 +30,21 @@ Alternatively, you can create a `dwave_config` file:
 ### 3. Running the Code:
 Once the D-Wave environment is set up, run the provided Python script for traffic signal optimization
 
+
+## Input/Output Format:
+
+### Input:
+1. **Directed Graph (Traffic Network)**: Represents intersections (nodes) and roads (edges). Each node is an intersection, and edges represent the roads between intersections.
+2. **Cars Vector**: A dictionary with the number of cars at each intersection, e.g., `{0: 20, 1: 15, 2: 30, 3: 10}`.
+
+### Output:
+1. **Green Signals and Modes**: The output will provide which intersections have green signals and in what mode they are operating. For example:
+   ```
+   Intersection 0 is in mode 0 (green signal)
+   Intersection 1 is in mode 3 (green signal)
+   ```
+2. **Energy**: The energy value represents the optimization score, where lower energy means better optimization and fewer conflicts.
+
 ## Code Description:
 This code uses the D-Wave quantum annealer to minimize traffic congestion by optimizing traffic light modes at intersections. The key considerations include:
 1. **Number of Cars**: Intersections with more cars are prioritized for green signals.
@@ -37,3 +52,11 @@ This code uses the D-Wave quantum annealer to minimize traffic congestion by opt
 3. **QUBO Model**: The traffic control problem is modeled as a Quadratic Unconstrained Binary Optimization (QUBO) problem, solved using the D-Wave quantum annealer.
 
 The code uses a conflict matrix to define which modes cannot be active simultaneously between connected intersections.
+
+## Future Expansion:
+This solution can be scaled to handle real-world traffic problems by:
+1. **Real-life Traffic Networks**: Expanding the input to include actual traffic networks (graph representation) of cities.
+2. **Real-time Traffic Updates**: Solving the problem at regular intervals (e.g., every few minutes) for real-time optimization based on traffic data (number of cars at intersections).
+3. **Hybrid Approach**: Using a hybrid quantum-classical approach for cities with dense traffic networks to handle large datasets and improve traffic flow efficiency.
+
+
